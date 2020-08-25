@@ -1,0 +1,3 @@
+include ':fcJsbridge'
+include ':app'
+rootProject.name = "FcJsBridge"
