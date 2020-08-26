@@ -1,5 +1,6 @@
 package com.fcbox.lib.fcjsbridge;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -11,6 +12,7 @@ import com.fcbox.anglib.fcwebview.base.WebViewClient;
 
 public class MainActivity2 extends AppCompatActivity {
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

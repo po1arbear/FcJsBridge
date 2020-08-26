@@ -2,20 +2,18 @@ package com.fcbox.lib.fcjsbridge;
 
 import android.util.Log;
 
-import com.google.gson.Gson;
-
 /**
- * 业务相关的jsApi
+ * 业务Plugin
  */
 public class JSUiTitlePlugin extends BaseJSPlugin {
+
+    final static String UI_NAV_SET_TITLE = "uiNavSetTitle";
 
     @Override
     public void jsCallNative(String id, String params) {
 
         Log.e("JSUiTitlePlugin", "id == " + id + " , params == " + params);
 
-        String data = new Gson().toJson("{\"status\":0,\"msg\":\"success\",\"data\":\"20200703\"}");
-
-        emitDataToWeb(id, data);
+        emitDataToWeb(id, params);
     }
 }

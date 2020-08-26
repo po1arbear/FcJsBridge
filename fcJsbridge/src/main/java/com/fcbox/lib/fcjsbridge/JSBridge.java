@@ -1,5 +1,6 @@
 package com.fcbox.lib.fcjsbridge;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 
 import com.fcbox.anglib.fcwebview.base.IWebview;
 import com.fcbox.anglib.fcwebview.base.ValueCallback;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -62,6 +64,7 @@ public class JSBridge {
 
         getWebView().post(new Runnable() {
 
+            @SuppressLint("ObsoleteSdkInt")
             @Override
             public void run() {
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
@@ -77,11 +80,12 @@ public class JSBridge {
                                 value = value.substring(1, value.length() - 1);
                             }
 
-                            BaseJSPlugin jsPlugin = jsPluginMap.get(plugin);
+                            BaseJSPlugin jsPlugin = getJSPlugin(plugin);
                             if (jsPlugin != null) {
+                                jsPlugin.setJSBridge(JSBridge.this);
                                 jsPlugin.setId(id);
                                 jsPlugin.setParams(value);
-                                jsPlugin.setJSBridge(JSBridge.this);
+                                jsPlugin.setPlugin(plugin);
                                 jsPlugin.jsCallNative(id, value);
                             }
                         }
@@ -98,10 +102,14 @@ public class JSBridge {
             return;
         }
 
-        final String jsCommand = String.format(BridgeUtil.EMIT_DATA_TO_WEB, id, params);
+        String format = String.format("{\"status\":0,\"success\":true,\"data\":%s}", params);
+        String data = new Gson().toJson(format);
+
+        final String jsCommand = String.format(BridgeUtil.EMIT_DATA_TO_WEB, id, data);
 
         getWebView().post(new Runnable() {
 
+            @SuppressLint("ObsoleteSdkInt")
             @Override
             public void run() {
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {

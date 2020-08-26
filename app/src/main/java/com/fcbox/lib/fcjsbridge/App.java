@@ -17,9 +17,10 @@ public class App extends Application {
         super.onCreate();
 
         Map<String, BaseJSPlugin> map = new HashMap<>();
-        map.put(SupportPlugin.UI_NAV_SET_TITLE, new JSUiTitlePlugin());
-        map.put(SupportPlugin.UI_TEST_AB, new JSUiTestPlugin());
-        map.put(SupportPlugin.METHOD_GET_LOCATION, new JSGetLocationPlugin());
+        map.put(JSUiTitlePlugin.UI_NAV_SET_TITLE, new JSUiTitlePlugin());
+        map.put(JSCommPlugin.COMMON_1, new JSCommPlugin());
+        map.put(JSCommPlugin.COMMON_2, new JSCommPlugin());
+        map.put(JSCommPlugin.COMMON_3, new JSCommPlugin());
         PluginManager.INSTANCE.registerJSPlugin(map);
     }
 }

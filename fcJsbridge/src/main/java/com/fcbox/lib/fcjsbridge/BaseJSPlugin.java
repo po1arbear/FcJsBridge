@@ -11,6 +11,8 @@ public abstract class BaseJSPlugin {
 
     private String params;
 
+    private String plugin;
+
     public JSBridge getJSBridge() {
         return jSBridge;
     }
@@ -33,6 +35,14 @@ public abstract class BaseJSPlugin {
 
     public void setParams(String params) {
         this.params = params;
+    }
+
+    public String getPlugin() {
+        return plugin == null ? "" : plugin;
+    }
+
+    public void setPlugin(String plugin) {
+        this.plugin = plugin;
     }
 
     public View getWebView() {
