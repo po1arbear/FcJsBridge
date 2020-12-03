@@ -6,15 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
 
-        BridgeWebView mWebView = findViewById(R.id.web_view);
+    BridgeWebView mWebView = findViewById(R.id.web_view);
 
-        mWebView.setWebViewClient(new BridgeWebViewClient(new JSBridge(mWebView)));
+    mWebView.setWebViewClient(new BridgeWebViewClient(new JSBridge(mWebView)));
 
-        mWebView.loadUrl("http://hybrid-app-sit2.fcbox.com");
-    }
+    mWebView.loadUrl("http://hybrid-app-sit2.fcbox.com");
+  }
 }

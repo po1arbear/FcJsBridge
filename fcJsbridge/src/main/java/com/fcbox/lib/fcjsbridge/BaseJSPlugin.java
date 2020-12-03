@@ -5,64 +5,74 @@ import android.view.View;
 
 public abstract class BaseJSPlugin {
 
-    private JSBridge jSBridge;
+  private JSBridge jSBridge;
 
-    private String id;
+  private String id;
 
-    private String params;
+  private String params;
 
-    private String plugin;
+  private String plugin;
 
-    public JSBridge getJSBridge() {
-        return jSBridge;
+  public JSBridge getJSBridge() {
+    return jSBridge;
+  }
+
+  public void setJSBridge(JSBridge jSBridge) {
+    this.jSBridge = jSBridge;
+  }
+
+  public String getId() {
+    return id == null ? "" : id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getParams() {
+    return params == null ? "" : params;
+  }
+
+  public void setParams(String params) {
+    this.params = params;
+  }
+
+  public String getPlugin() {
+    return plugin == null ? "" : plugin;
+  }
+
+  public void setPlugin(String plugin) {
+    this.plugin = plugin;
+  }
+
+  public View getWebView() {
+    if (jSBridge != null) {
+      return jSBridge.getWebView();
     }
+    return null;
+  }
 
-    public void setJSBridge(JSBridge jSBridge) {
-        this.jSBridge = jSBridge;
+  public Context getContext() {
+    View view = getWebView();
+    if (view != null) {
+      return view.getContext();
     }
+    return null;
+  }
 
-    public String getId() {
-        return id == null ? "" : id;
-    }
+  public void emitDataToWeb(String id, String params) {
+    jSBridge.emitDataToWeb(id, params);
+  }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  public abstract void jsCallNative(String id, String params);
 
-    public String getParams() {
-        return params == null ? "" : params;
-    }
-
-    public void setParams(String params) {
-        this.params = params;
-    }
-
-    public String getPlugin() {
-        return plugin == null ? "" : plugin;
-    }
-
-    public void setPlugin(String plugin) {
-        this.plugin = plugin;
-    }
-
-    public View getWebView() {
-        if (jSBridge != null) {
-            return jSBridge.getWebView();
-        }
-        return null;
-    }
-
-    public Context getContext() {
-        View view = getWebView();
-        if (view != null) {
-            return view.getContext();
-        }
-        return null;
-    }
-
-    public void emitDataToWeb(String id, String params) {
-        jSBridge.emitDataToWeb(id, params);
-    }
-
-    public abstract void jsCallNative(String id, String params);
+  @Override
+  public String toString() {
+    return "BaseJSPlugin{" +
+        "jSBridge=" + this.getClass().getSimpleName() +
+        ", id='" + id + '\'' +
+        ", params='" + params + '\'' +
+        ", plugin='" + plugin + '\'' +
+        '}';
+  }
 }

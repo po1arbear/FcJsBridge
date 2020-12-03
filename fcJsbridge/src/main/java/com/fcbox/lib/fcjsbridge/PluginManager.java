@@ -7,37 +7,37 @@ import java.util.Map;
 
 public enum PluginManager {
 
-    INSTANCE;
+  INSTANCE;
 
-    private Map<String, BaseJSPlugin> jsPluginMap;
+  private Map<String, BaseJSPlugin> jsPluginMap;
 
-    public Map<String, BaseJSPlugin> getJSPlugins() {
-        return jsPluginMap;
+  public Map<String, BaseJSPlugin> getJSPlugins() {
+    return jsPluginMap;
+  }
+
+  public void registerJSPlugin(String jsFunction, BaseJSPlugin jsPlugin) {
+    if (jsPluginMap == null) {
+      jsPluginMap = new HashMap<>();
     }
 
-    public void registerJSPlugin(String jsFunction, BaseJSPlugin jsPlugin) {
-        if (jsPluginMap == null) {
-            jsPluginMap = new HashMap<>();
-        }
+    if (!TextUtils.isEmpty(jsFunction) && jsPlugin != null) {
+      jsPluginMap.put(jsFunction, jsPlugin);
+    }
+  }
 
-        if (!TextUtils.isEmpty(jsFunction) && jsPlugin != null) {
-            jsPluginMap.put(jsFunction, jsPlugin);
-        }
+  public void registerJSPlugin(Map<String, BaseJSPlugin> jSPlugins) {
+    if (jsPluginMap == null) {
+      jsPluginMap = new HashMap<>();
     }
 
-    public void registerJSPlugin(Map<String, BaseJSPlugin> jSPlugins) {
-        if (jsPluginMap == null) {
-            jsPluginMap = new HashMap<>();
-        }
-
-        if (jSPlugins != null) {
-            jsPluginMap.putAll(jSPlugins);
-        }
+    if (jSPlugins != null) {
+      jsPluginMap.putAll(jSPlugins);
     }
+  }
 
-    public void unregisterJSPlugin(String jsFunction) {
-        if (jsPluginMap != null && jsFunction != null) {
-            jsPluginMap.remove(jsFunction);
-        }
+  public void unregisterJSPlugin(String jsFunction) {
+    if (jsPluginMap != null && jsFunction != null) {
+      jsPluginMap.remove(jsFunction);
     }
+  }
 }

@@ -7,13 +7,13 @@ import android.util.Log;
  */
 public class JSUiTitlePlugin extends BaseJSPlugin {
 
-    final static String UI_NAV_SET_TITLE = "uiNavSetTitle";
+  final static String UI_NAV_SET_TITLE = "uiNavSetTitle";
 
-    @Override
-    public void jsCallNative(String id, String params) {
+  @Override
+  public void jsCallNative(String id, String params) {
 
-        Log.e("JSUiTitlePlugin", "id == " + id + " , params == " + params);
+    Log.e("JSUiTitlePlugin", "id == " + id + " , params == " + params);
 
-        emitDataToWeb(id, params);
-    }
+    emitDataToWeb(id, params);
+  }
 }

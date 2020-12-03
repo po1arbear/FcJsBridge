@@ -12,15 +12,15 @@ import java.util.Map;
  */
 public class App extends Application {
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
+  @Override
+  public void onCreate() {
+    super.onCreate();
 
-        Map<String, BaseJSPlugin> map = new HashMap<>();
-        map.put(JSUiTitlePlugin.UI_NAV_SET_TITLE, new JSUiTitlePlugin());
-        map.put(JSCommPlugin.COMMON_1, new JSCommPlugin());
-        map.put(JSCommPlugin.COMMON_2, new JSCommPlugin());
-        map.put(JSCommPlugin.COMMON_3, new JSCommPlugin());
-        PluginManager.INSTANCE.registerJSPlugin(map);
-    }
+    Map<String, BaseJSPlugin> map = new HashMap<>();
+    map.put(JSUiTitlePlugin.UI_NAV_SET_TITLE, new JSUiTitlePlugin());
+    map.put(JSCommPlugin.COMMON_1, new JSCommPlugin());
+    map.put(JSCommPlugin.COMMON_2, new JSCommPlugin());
+    map.put(JSCommPlugin.COMMON_3, new JSCommPlugin());
+    PluginManager.INSTANCE.registerJSPlugin(map);
+  }
 }

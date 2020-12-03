@@ -14,71 +14,71 @@ import com.fcbox.anglib.fcwebview.base.WebViewClient;
 
 public class BridgeWebView extends WebView implements IWebview {
 
-    public BridgeWebView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
-    }
+  public BridgeWebView(Context context, AttributeSet attrs) {
+    super(context, attrs);
+    init();
+  }
 
-    public BridgeWebView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        init();
-    }
+  public BridgeWebView(Context context, AttributeSet attrs, int defStyle) {
+    super(context, attrs, defStyle);
+    init();
+  }
 
-    public BridgeWebView(Context context) {
-        super(context);
-        init();
-    }
+  public BridgeWebView(Context context) {
+    super(context);
+    init();
+  }
 
-    private void init() {
-        getSettings().setJavaScriptEnabled(true);
-    }
+  private void init() {
+    getSettings().setJavaScriptEnabled(true);
+  }
 
-    @Override
-    public View getWebview() {
-        return this;
-    }
+  @Override
+  public View getWebview() {
+    return this;
+  }
 
-    @Override
-    public View getView() {
-        return null;
-    }
+  @Override
+  public View getView() {
+    return null;
+  }
 
-    @Override
-    public int getContentWidth() {
-        return 0;
-    }
+  @Override
+  public int getContentWidth() {
+    return 0;
+  }
 
-    @Override
-    public void setWebViewClient(WebViewClient webViewClient) {
+  @Override
+  public void setWebViewClient(WebViewClient webViewClient) {
 
-    }
+  }
 
-    @Override
-    public void setDownloadListener(DownloadListener downloadListener) {
+  @Override
+  public void setDownloadListener(DownloadListener downloadListener) {
 
-    }
+  }
 
-    @Override
-    public void setWebChromeClient(WebChromeClient webChromeClient) {
+  @Override
+  public void setWebChromeClient(WebChromeClient webChromeClient) {
 
-    }
+  }
 
-    @Override
-    public void evaluateJavascript(String s, final ValueCallback<String> valueCallback) {
-        super.evaluateJavascript(s, new ValueCallback<String>() {
-            public void onReceiveValue(String s) {
-                valueCallback.onReceiveValue(s);
-            }
-        });
-    }
+  @Override
+  public void evaluateJavascript(String s, final ValueCallback<String> valueCallback) {
+    super.evaluateJavascript(s, new ValueCallback<String>() {
+      public void onReceiveValue(String s) {
+        valueCallback.onReceiveValue(s);
+      }
+    });
+  }
 
-    @Override
-    public IWebSettings getFcWebviewSettings() {
-        return null;
-    }
+  @Override
+  public IWebSettings getFcWebviewSettings() {
+    return null;
+  }
 
-    @Override
-    public com.fcbox.anglib.fcwebview.base.HitTestResult getFcHitTestResult() {
-        return null;
-    }
+  @Override
+  public com.fcbox.anglib.fcwebview.base.HitTestResult getFcHitTestResult() {
+    return null;
+  }
 }
