@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     BridgeWebView mWebView = findViewById(R.id.web_view);
 
-    mWebView.setWebViewClient(new BridgeWebViewClient(new JSBridge(mWebView)));
+    mWebView.setWebViewClient(new BridgeWebViewClient(new JSBridge(new WebViewProxy(mWebView))));
 
     mWebView.loadUrl("http://hybrid-app-sit2.fcbox.com");
   }

@@ -22,7 +22,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     mWebView.getFcWebviewSettings().setJavaScriptEnabled(true);
 
-    final JSBridge jsBridge = new JSBridge(mWebView);
+    final JSBridge jsBridge = new JSBridge(new WebViewProxy(mWebView));
 
     mWebView.setWebViewClient(new WebViewClient() {
 

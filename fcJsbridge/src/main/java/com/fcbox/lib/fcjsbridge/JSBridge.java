@@ -19,9 +19,9 @@ public class JSBridge {
    */
   private Map<String, BaseJSPlugin> jsPluginMap = new HashMap<>();
 
-  private final IWebview mWebView;
+  private final WebViewProxy mWebView;
 
-  public JSBridge(IWebview webView) {
+  public JSBridge(WebViewProxy webView) {
     mWebView = webView;
 
     jsPluginMap.putAll(PluginManager.INSTANCE.getJSPlugins());
